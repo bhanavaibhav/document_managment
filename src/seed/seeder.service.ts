@@ -39,7 +39,7 @@ export class SeederService implements OnModuleInit {
 
     const hashedPassword = await bcrypt.hash('1234', 10);
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 100; i++) {
       const role = roles[Math.floor(Math.random() * roles.length)];
       const user = await this.userRepo.save({
         email: faker.internet.email(),
@@ -49,12 +49,12 @@ export class SeederService implements OnModuleInit {
 
       // Generate 100 documents per user with the same fileUrl
       const documents:Document[] = [];
-      for (let j = 0; j < 100; j++) {
+      for (let j = 0; j < 10; j++) {
         documents.push({
           title: faker.lorem.words(3),
           content:faker.lorem.paragraphs(2),
-          fileUrl: "/files/sample.pdf",
-          status: 'pending',
+          fileUrl: "/uploads/sample.pdf",
+          status: 'processed',
           uploadedBy: user,
           createdAt: new Date(),
         });

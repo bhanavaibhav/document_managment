@@ -11,7 +11,7 @@ import {
   import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
   import { UserRole } from '../../modules/users/entities/user-role.enum';
   import { FileInterceptor } from '@nestjs/platform-express';
-  import { multerConfig } from 'src/config/multer.config';
+  import { multerConfig } from '../../config/multer.config';
   import * as path from 'path';
   
 
@@ -38,8 +38,10 @@ import {
       if(!document.id){
         throw new BadRequestException('Document is required');
       }
-      const absoluteFilePath = path.resolve(__dirname, '..', 'uploads', file.filename);
-      this.documentService.triggerIngestion(document.id, absoluteFilePath);
+      const absoluteFilePath = path.resolve(__dirname, '../../..', 'uploads', file.filename);
+      console.log(absoluteFilePath);
+      
+      await this.documentService.triggerIngestion(document.id, absoluteFilePath);
       return document;
 
 

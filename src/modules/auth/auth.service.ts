@@ -24,7 +24,10 @@ export class AuthService {
       const user = await this.userService.createUser({ email, password, role });
       return { status: 201, message: 'User registered successfully', data: { user } };
     } catch (error) {
-      throw new InternalServerErrorException('Something went wrong during registration');
+      if (!(error instanceof BadRequestException)) {
+        throw new InternalServerErrorException('Something went wrong during registration');
+      }
+      throw error;  
     }
   }
 
@@ -45,7 +48,7 @@ export class AuthService {
       const payload = { userId: user.id, role: user.role };
       //create token using jwt
       const accessToken = this.jwtService.sign(payload);
-      return { status: 200, message: 'User login successful', data: { accessToken } };
+      return { status: 200, message: 'User login successful', data: { accessToken,userId: user.id, role: user.role } };
     } catch (error) {
       if (error instanceof UnauthorizedException || error instanceof BadRequestException) {
         throw error;
