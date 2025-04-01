@@ -18,6 +18,7 @@ import { DataSource } from 'typeorm';
         database: configService.get<string>('DB_NAME'),
         autoLoadEntities: true,
         synchronize: false,
+        logging: false,
       }),
     }),
   ],
