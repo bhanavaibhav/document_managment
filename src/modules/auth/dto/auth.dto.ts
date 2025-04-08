@@ -15,5 +15,5 @@ export class AuthDto {
   password: string;
 
   @IsEnum(UserRole)
-  role: UserRole;
+  role!: UserRole;
 }

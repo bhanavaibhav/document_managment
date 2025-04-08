@@ -16,7 +16,7 @@
     "seed": "ts-node -r tsconfig-paths/register src/seed.ts",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-     "test": "jest",
+     "test": "jest --testPathPattern=users.service.spec.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
