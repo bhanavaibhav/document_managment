@@ -88,6 +88,7 @@ export class DocumentsService {
       }
     } catch (error) {
       console.error('Ingestion failed', error);
+      throw new NotFoundException(`Ingestion failed`);
     }
   }
 }

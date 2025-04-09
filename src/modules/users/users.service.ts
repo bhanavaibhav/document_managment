@@ -50,7 +50,12 @@ export class UsersService {
       const savedUser = await this.userRepository.save(newUser);
       return savedUser;
     } catch (error) {
-      this.logger.error(`Error registering user: ${error.message}`, error.stack);
+      if (
+        error instanceof ConflictException ||
+        error instanceof BadRequestException
+      ) {
+        throw error;
+      }
       throw new InternalServerErrorException('Failed to create user');
     }
   }
@@ -109,7 +114,10 @@ export class UsersService {
       return updatedUser;
     } catch (error) {
       this.logger.error(`Error updating user role: ${error.message}`, error.stack);
-      throw new InternalServerErrorException('Failed to update user role');
+      if (error instanceof BadRequestException || error instanceof NotFoundException) {
+        throw error;
+      }
+          throw new InternalServerErrorException('Failed to update user role');
     }
   }
 
