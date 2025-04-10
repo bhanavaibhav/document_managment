@@ -33,15 +33,26 @@ npm run start
 
 ### API Endpoints
 
+#### Auth Endpoints:
+- **Register User:** `POST /auth/register`
+- **Login User:** `POST /auth/login`
+
+
 #### User Endpoints:
-- **Register User:** `POST /users/register`
-- **Login User:** `POST /users/login`
-- **Get User Info:** `GET /users/:id`
+- **Create User:** `POST /users`
+- **Get All Users:** `GET /users`
+- **Get User By ID:** `GET /users/:id`
+- **Update User Role:** `PUT /users/role`
+- **Delete User:** `DELETE /users/:id`
+
 
 #### Document Endpoints:
-- **Upload Document:** `POST /documents/upload`
-- **Get Document:** `GET /documents/:id`
+- **Upload Document:** `POST /documents`
+- **Get All Documents:** `GET /documents`
+- **Get Document By ID:** `GET /documents/:id`
+- **Update Document:** `PUT /documents/:id`
 - **Delete Document:** `DELETE /documents/:id`
+
 
 #### Run Tests
 ```sh
