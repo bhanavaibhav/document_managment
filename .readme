@@ -55,3 +55,27 @@ Document Management - Upload, retrieve, update, and delete documents
 Integration with Python Backend - Trigger document ingestion and process data
 Database Support - Uses PostgreSQL with TypeORM
 
+
+#### Project Structure
+DOCUMENT_MANAGEMENT/
+├── node_modules/
+├── src/
+│   ├── common/
+│   │   ├── decorators/
+│   │   ├── guards/
+│   │   ├── interface/
+│   │   └── types/
+│   ├── config/
+│   ├── database/
+│   │   └── migrations/
+│   ├── modules/
+│   │   ├── auth/
+│   │   ├── documents/
+│   │   └── users/
+│   ├── seed/
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   └── main.ts
+├── test/
+├── uploads/
