@@ -1,1 +1,93 @@
 # document_managment
+### Project Setup Guide
+
+#### Clone the Repository
+```sh
+git clone <repository_url>
+cd <project_directory>
+```
+
+#### Install Dependencies
+```sh
+npm install
+```
+
+#### Check and Install Node.js & npm (if not installed)
+For Windows:
+```sh
+node -v || (choco install nodejs)
+npm -v || (choco install npm)
+```
+
+For Ubuntu:
+```sh
+node -v || (sudo apt update && sudo apt install -y nodejs npm)
+npm -v
+```
+
+#### Run the Project
+```sh
+npm run start
+```
+
+
+
+### API Endpoints
+
+#### Auth Endpoints:
+- **Register User:** `POST /auth/register`
+- **Login User:** `POST /auth/login`
+
+
+#### User Endpoints:
+- **Create User:** `POST /users`
+- **Get All Users:** `GET /users`
+- **Get User By ID:** `GET /users/:id`
+- **Update User Role:** `PUT /users/role`
+- **Delete User:** `DELETE /users/:id`
+
+
+#### Document Endpoints:
+- **Upload Document:** `POST /documents`
+- **Get All Documents:** `GET /documents`
+- **Get Document By ID:** `GET /documents/:id`
+- **Update Document:** `PUT /documents/:id`
+- **Delete Document:** `DELETE /documents/:id`
+
+
+#### Run Tests
+```sh
+npm run test
+```
+
+Features
+User Authentication - Secure login and registration with JWT
+Role-Based Access Control - Manage permissions for Admin, Editor, and Viewer
+Document Management - Upload, retrieve, update, and delete documents
+Integration with Python Backend - Trigger document ingestion and process data
+Database Support - Uses PostgreSQL with TypeORM
+
+
+#### Project Structure
+DOCUMENT_MANAGEMENT/
+├── node_modules/
+├── src/
+│   ├── common/
+│   │   ├── decorators/
+│   │   ├── guards/
+│   │   ├── interface/
+│   │   └── types/
+│   ├── config/
+│   ├── database/
+│   │   └── migrations/
+│   ├── modules/
+│   │   ├── auth/
+│   │   ├── documents/
+│   │   └── users/
+│   ├── seed/
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   └── main.ts
+├── test/
+├── uploads/
